@@ -1,0 +1,22 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+    <h1>Welcome, {{ user.username }}!</h1>
+
+    <a href="{% url 'task_list' %}">My Tasks</a>  <!-- Redirect to task list page -->
+
+    <h2>Your Tasks</h2>
+    <ul>
+        {% for task in tasks %}
+            <li>{{ task.title }} - 
+                <a href="{% url 'edit_task' task.id %}">Edit</a> | 
+                <a href="{% url 'delete_task' task.id %}">Delete</a>
+            </li>
+        {% empty %}
+            <p>No tasks available.</p>
+            <a href="{% url 'add_task' %}">Add New Task</a> <!-- Only show if no tasks -->
+        {% endfor %}
+    </ul>
+
+    <a href="{% url 'logout' %}">Logout</a>
+{% endblock %}
