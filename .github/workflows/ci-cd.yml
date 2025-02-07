@@ -3,10 +3,10 @@ name: CI/CD Pipeline
 on:
   push:
     branches:
-      - tsk_assessment  
+      - tsk_assessment  # Runs when changes are pushed to tsk_assessment
   pull_request:
     branches:
-      - tsk_assessment
+      - main  # Runs when a PR is created to merge tsk_assessment into main
 
 jobs:
   build:
